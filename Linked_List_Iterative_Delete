@@ -87,28 +87,24 @@ Node* insertAfter(Node* head,int n,int x){
 }
 
 Node* deleteNode(Node* head,int n){
-    Node* prev;
-    Node* ptr;
+    Node* prev = NULL;
+    Node* ptr = NULL;
     
-    prev = head;
-    ptr = prev->next;
-    
-    while(ptr!=NULL && prev->data!=n){
+    ptr = head;
+    while(ptr!=NULL && ptr->data!=n){
         prev = ptr;
-        ptr2 = ptr2->next;
+        ptr = ptr->next;
     }
     
-    /*last element to be deleted*/
-    if(ptr==NULL && prev->data==n){
-        
-        return(head);
-    }else if(ptr == head){
+    if(prev == NULL){ /*head node to be deleted*/
         head = ptr->next;
         free(ptr);
-        return(head);
     }else{
-        
+    prev->next = ptr->next;
+    free(ptr);
     }
+    
+    return(head);
 }
 
 int main() {
@@ -123,6 +119,9 @@ int main() {
     printList(head);
     cout<<"Inserting element after ****************"<<endl;
     head = insertAfter(head,9,10);
+    printList(head);
+    cout<<"Deleting **************"<<endl;
+    head = deleteNode(head,1);
     printList(head);
     
     
