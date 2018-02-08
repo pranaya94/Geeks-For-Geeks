@@ -48,12 +48,17 @@ void reverseRecursive(Node** head){
    rest = first->next;
    
    if(rest == NULL){
+       cout<<"first "<<first->data<<" rest is null"<<endl;
        return;
+   }else{
+       cout<<"local rest is : "<<rest->data<<endl;
    }
    reverseRecursive(&rest);
-   first->next->next = first; //rest->next doesn't exist so cant use that dummy
+   first->next->next = first; 
+   cout<<"first->next :"<<first->next->data<<" linked to first "<<first->data<<endl;
    first->next = NULL;
-   *head = rest; //how is this being assigned, should rest not change going down the stack ?
+   *head = rest;
+   cout<<"but here rest is :"<<rest->data<<endl;
    return;
 }
 
