@@ -86,7 +86,7 @@ Node* insertAfter(Node* head,int n,int x){
     return(head);
 }
 
-void deleteList(Node* &head){
+void deleteList(Node* head){
    if(head==NULL){
        return;
    }
